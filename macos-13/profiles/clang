@@ -7,5 +7,5 @@ compiler.libcxx=libstdc++
 os=Macos
 
 [buildenv]
-CC=$(brew --prefix llvm@15)/bin/clang
-CXX=$(brew --prefix llvm@15)/bin/clang++
+CC=clang
+CXX=clang++
