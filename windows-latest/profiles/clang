@@ -1,0 +1,6 @@
+[settings]
+arch=x86_64
+compiler=clang
+compiler.version=16
+compiler.cppstd=23
+os=Windows
