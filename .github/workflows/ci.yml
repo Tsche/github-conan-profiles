@@ -8,7 +8,7 @@ on:
     branches: ["master"]
 
 jobs:
-  test-runtime:
+  run-conan:
     strategy:
       matrix:
         compiler: [clang]
