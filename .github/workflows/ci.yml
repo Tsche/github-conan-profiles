@@ -11,6 +11,8 @@ jobs:
   test-runtime:
     strategy:
       matrix:
+        os: []
+        compiler: []
         include:
         - os: ubuntu-latest
           compiler: [gcc-13, clang-15]
