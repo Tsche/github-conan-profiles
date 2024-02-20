@@ -11,15 +11,17 @@ jobs:
   test-runtime:
     strategy:
       matrix:
-        os: []
-        compiler: []
-        include:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        compiler: [gcc, clang, msvc]
+        exclude:
         - os: ubuntu-latest
-          compiler: [gcc-13, clang-15]
+          compiler: msvc
         - os: macos-latest
-          compiler: [clang-14]
+          compiler: msvc
+        - os: macos-latest
+          compiler: gcc
         - os: windows-latest
-          compiler: [msvc, clang-16]
+          compiler: gcc
 
     runs-on: ${{ matrix.os }}
     steps:
