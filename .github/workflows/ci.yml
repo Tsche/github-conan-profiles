@@ -13,15 +13,12 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         compiler: [gcc, clang, msvc]
-        exclude:
+        include:
         - os: ubuntu-latest
-          compiler: msvc
-        - os: macos-latest
-          compiler: msvc
-        - os: macos-latest
           compiler: gcc
         - os: windows-latest
-          compiler: gcc
+          compiler: msvc
+
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -34,6 +31,7 @@ jobs:
 
     - name: Set up Conan profile
       run: |
+        conan profile detect
         conan config install https://github.com/Tsche/github-conan-profiles.git -sf=${{ matrix.os }}
 
     - name: Build
