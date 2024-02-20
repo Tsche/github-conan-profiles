@@ -4,3 +4,7 @@ compiler=clang
 compiler.version=16
 compiler.cppstd=23
 os=Windows
+
+[buildenv]
+CC=clang
+CXX=clang++
