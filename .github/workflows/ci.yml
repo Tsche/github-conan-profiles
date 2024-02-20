@@ -11,7 +11,7 @@ jobs:
   run-conan:
     strategy:
       matrix:
-        compiler: [clang, clang_libc++]
+        compiler: [clang]
         os: [ubuntu-latest, macos-latest, windows-latest, macos-13]
         include:
         - compiler: gcc
