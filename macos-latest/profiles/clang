@@ -6,5 +6,5 @@ compiler.cppstd=20
 os=Macos
 
 [buildenv]
-CC=clang-15
-CXX=clang++-15
+CC=$(brew --prefix llvm@15)/bin/clang
+CXX=$(brew --prefix llvm@15)/bin/clang++
