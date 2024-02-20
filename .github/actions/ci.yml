@@ -1,0 +1,39 @@
+name: "CI"
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  test-runtime:
+    strategy:
+      matrix:
+        include:
+        - os: ubuntu-latest
+          compiler: [gcc-13, clang-15]
+        - os: macos-latest
+          compiler: [clang-14]
+        - os: windows-latest
+          compiler: [msvc, clang-16]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install Conan
+      id: conan
+      uses: turtlebrowser/get-conan@main
+
+    - name: Set up Conan profile
+      run: |
+        conan config install https://github.com/Tsche/github-conan-profiles.git -sf=${{ matrix.os }}
+
+    - name: Build
+      run: conan build . -s build_type=Debug --build=missing -pr $${{ matrix.compiler }}
+
+    - name: Run
+      run: ./build/Debug/Foo
