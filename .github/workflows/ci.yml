@@ -31,12 +31,11 @@ jobs:
 
     - name: Set up Conan profile
       run: |
-        conan profile detect
         conan config install https://github.com/Tsche/github-conan-profiles.git -sf=${{ matrix.os }}
 
     - name: Build
       working-directory: test
-      run: conan build . -s build_type=Debug --build=missing -pr ${{ matrix.compiler }}
+      run: conan build . -s build_type=Debug --build=missing -pr ${{ matrix.compiler }} -pr:b ${{ matrix.compiler }}
 
     - name: Run
       working-directory: test
