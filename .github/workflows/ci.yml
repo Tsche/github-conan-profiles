@@ -37,7 +37,7 @@ jobs:
         conan config install https://github.com/Tsche/github-conan-profiles.git -sf=${{ matrix.os }}
 
     - name: Build
-      run: conan build . -s build_type=Debug --build=missing -pr $${{ matrix.compiler }}
+      run: conan build . -s build_type=Debug --build=missing -pr ${{ matrix.compiler }}
 
     - name: Run
       run: ./build/Debug/Foo
